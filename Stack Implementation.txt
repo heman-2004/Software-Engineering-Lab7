@@ -1,0 +1,67 @@
+import java.util.Arrays;
+
+public class StackMethods {
+    private int top;
+    int size;
+    int[] stack;
+
+    public StackMethods(int arraySize) {
+        size = arraySize;
+        stack = new int[size];
+        top = -1;
+    }
+
+    public void push(int value) {
+        if (top == size - 1) {
+            System.out.println("Stack is full, can't push a value");
+        } else {
+            top++; // Corrected increment for push
+            stack[top] = value;
+        }
+    }
+
+    public int pop() {
+        if (!isEmpty()) {
+            int poppedValue = stack[top]; // Get the value to return
+            top--; // Corrected decrement for pop
+            return poppedValue; // Return the popped value
+        } else {
+            System.out.println("Can't pop...stack is empty");
+            return -1; // Indicate that the stack is empty
+        }
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.print("Stack elements: ");
+        for (int i = 0; i <= top; i++) { // Corrected loop condition
+            System.out.print(stack[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class StackReviseDemo {
+    public static void main(String[] args) {
+        StackMethods newStack = new StackMethods(5);
+        newStack.push(10);
+        newStack.push(1);
+        newStack.push(50);
+        newStack.push(20);
+        newStack.push(90);
+
+        newStack.display();
+        newStack.pop();
+        newStack.pop();
+        newStack.pop();
+        newStack.pop();
+        newStack.display();
+    }
+}
